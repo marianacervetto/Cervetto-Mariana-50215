@@ -1,0 +1,24 @@
+BBBodegueando - Read Me
+
+Una vez instalada la aplicación, usted podrá acceder a la misma mediante la siguiente URL: http://127.0.0.1:8000/
+
+En esta aplicación usted podrá acceder a:
+
+* Listado de bodegones recomendados (http://127.0.0.1:8000/bodegones)
+* Listado de nombres de las personas que realizan reseñas sobre bodegones en el blog (http://127.0.0.1:8000/bodegueadores)
+* Listado de reseñas hechas por los miembros del blog (http://127.0.0.1:8000/resenas)
+
+
+Ingresar nuevos datos:
+
+* Para ingresar al sistema información sobre un nuevo bodegon ingresar a http://127.0.0.1:8000/bodegon_form
+* Para ingresar al sistema información sobre un nuevo ''bodegueador'' ingresar a http://127.0.0.1:8000/bodegueador_form
+* Para ingresar al sistema información una nueva reseña ingresar a http://127.0.0.1:8000/resena_form
+
+
+Buscar datos:
+
+* Para buscar información sobre un bodegon que ya figura en sistema, ingresar a http://127.0.0.1:8000/buscar_bodegones
+* Para buscar información sobre un bodegueador que ya figura en sistema, ingresar a http://127.0.0.1:8000/buscar_bodegueadores
+* Para buscar información sobre una reseña que ya figura en sistema, ingresar a http://127.0.0.1:8000/buscar_resenas
+

@@ -1,0 +1,15 @@
+{% extends 'aplicacion/index.html' %}
+
+{% block titulo%}
+<h1>Buscar Resenas</h1>
+{% endblock titulo%}
+
+{% block contenido%}
+
+<form action="{% url 'encontrar_resenas' %}" method="get">
+    {% csrf_token %}
+    <p> Busque reseñas de bodegones que coincidan con el texto que ingrese a continuación: <input type="text" name="buscar" id="buscar"></p>
+    <input type="submit" value="Buscar">
+</form>
+
+{% endblock contenido%}

@@ -1,0 +1,31 @@
+{% extends 'aplicacion/index.html' %}
+
+{% block titulo%}
+<h1>Bodegueadores</h1>
+{% endblock titulo%}
+
+{% block contenido%}
+<h2> Nuestros expertos te darán las mejores recomendaciones bodegueras</h2>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>nombre</th>
+            <th>apellido</th>
+            <th>cantidad_resenas</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for c in bodegueadores  %}
+        <tr>
+            <td>{{ c.id }}</td>
+            <td>{{ c.nombre }}</td>
+            <td>{{ c.apellido }}</td>
+            <td>{{ c.cantidad_resenas }}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+{% endblock contenido%}

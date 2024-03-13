@@ -1,0 +1,43 @@
+{% extends 'aplicacion/index.html' %}
+<header class="masthead" style="background-image: url('static/assets/img/home-bg.jpg')">
+    <div class="container position-relative px-2 px-lg-3">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-15 col-lg-10 col-xl-7">
+                <div class="site-heading">
+{% block titulo%}
+<h1 class="mb-5">Bodegones</h1>
+{% endblock titulo%}
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+{% block contenido%}
+<h2> Te presentamos nuestra selección de bodegones BBB </h2>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>nombre</th>
+            <th>direccion</th>
+            <th>zona</th>
+            <th>telefono</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for c in bodegones %}
+        <tr>
+            <td>{{ c.id }}</td>
+            <td>{{ c.nombre }}</td>
+            <td>{{ c.direccion }}</td>
+            <td>{{ c.zona }}</td>
+            <td>{{ c.telefono }}</td> 
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+{% endblock contenido%}

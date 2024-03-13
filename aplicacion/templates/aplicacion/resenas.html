@@ -1,0 +1,36 @@
+{% extends 'aplicacion/index.html' %}
+
+{% block titulo%}
+<h1>Reseñas</h1>
+{% endblock titulo%}
+
+{% block contenido%}
+<h2>Dejate llevar por las opiniones de nuestros expertos y planificá tu próxima salida siguiendo sus recomendaciones</h2>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>autor</th>
+            <th>bodegon</th>
+            <th>contenido</th>
+            <th>fecha</th>
+
+        </tr>
+    </thead>
+    <tbody>
+    {% for c in resenas  %}
+        <tr>
+            <td>{{ c.id }}</td>
+            <td>{{ c.autor }}</td>
+            <td>{{ c.bodegon }}</td>
+            <td>{{ c.contenido }}</td>
+            <td>{{ c.fecha }}</td>
+
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+
+{% endblock contenido%}

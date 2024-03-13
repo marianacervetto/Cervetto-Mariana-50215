@@ -1,0 +1,15 @@
+{% extends 'aplicacion/index.html' %}
+
+{% block titulo%}
+<h1>Buscar Bodegueadores</h1>
+{% endblock titulo%}
+
+{% block contenido%}
+
+<form action="{% url 'encontrar_bodegueadores' %}" method="get">
+    {% csrf_token %}
+    <p> Busque bodegueadores que coincidan con el texto que ingrese a continuación: <input type="text" name="buscar" id="buscar"></p>
+    <input type="submit" value="Buscar">
+</form>
+
+{% endblock contenido%}
