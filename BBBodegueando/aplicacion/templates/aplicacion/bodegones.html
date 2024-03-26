@@ -1,0 +1,64 @@
+{% extends 'aplicacion/index.html' %}
+
+{% block titulo%}
+<h1 class="mb-5">Directorio de Bodegones</h1>
+{% endblock titulo%}
+
+
+       
+
+{% block contenido%}
+
+
+    <h2> Te presentamos nuestra selección de bodegones BBB </h2>
+
+        {% block filtrar%}
+        <a class="btn btn-primary btn-sm" href="/buscar_bodegones">Filtrar Búsqueda</a></div>
+        {% endblock filtrar%}
+
+        {% block agregar%}
+        <a class="btn btn-primary btn-sm" href="/bodegon_form">Agregar Bodegón</a></div>
+        {% endblock agregar%}
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Direccion</th>
+                <th>Zona</th>
+                <th>Telefono</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for c in bodegones %}
+            <tr>
+                <td>{{ c.id }}</td>
+                <td>{{ c.nombre }}</td>
+                <td>{{ c.direccion }}</td>
+                <td>{{ c.zona }}</td>
+                <td>{{ c.telefono }}</td> 
+                <td>
+                    <a
+                      href="{% url 'bodegon_update' c.id %}"
+                      class="btn btn-primary"
+                      style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"
+                      ><i class="fa fa-edit fa-sm" title="Edit Record"></i>
+                    </a>
+                    <a
+                      href="{% url 'bodegon_delete' c.id %}"
+                      class="btn btn-danger"
+                      style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"
+                      ><i class="fa fa-trash fa-sm" title="Delete Record"></i>
+                    </a>                
+                </td>    
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock contenido%}
+
+{% block cards%}
+{% endblock cards%}

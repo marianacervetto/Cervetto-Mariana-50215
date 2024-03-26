@@ -1,0 +1,69 @@
+{% extends 'aplicacion/index.html' %}
+
+{% block titulo%}
+<h1>Bodegueadores</h1>
+{% endblock titulo%}
+
+
+{% block buscador%}
+
+<form action="{% url 'encontrar_bodegueadores' %}" method="get">
+    {% csrf_token %}
+    <p> Busque bodegueadores que coincidan con el texto que ingrese a continuación: <input type="text" name="buscar" id="buscar"></p>
+    <input type="submit" value="Buscar">
+</form>
+
+{% endblock buscador%}
+
+
+{% block contenido%}
+<h2> ¡Te presentamos a nuestros bodegueadores expertos! Ellos son los encargados de realizar las reseñas de BBBodegueando</h2>
+
+{% block filtrar%}
+<a class="btn btn-primary btn-sm" href="/buscar_bodegueadores">Filtrar Búsqueda</a></div>
+{% endblock filtrar%}
+
+{% block agregar%}
+<a class="btn btn-primary btn-sm" href="/bodegueador_form">Agregar Bodegueador</a></div>
+{% endblock agregar%}
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Reseñas hechas</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for c in bodegueadores  %}
+        <tr>
+            <td>{{ c.id }}</td>
+            <td>{{ c.nombre }}</td>
+            <td>{{ c.apellido }}</td>
+            <td>{{ c.cantidad_resenas }}</td>
+            <td>
+                <a
+                  href="{% url 'bodegueador_update' c.id %}"
+                  class="btn btn-primary"
+                  style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"
+                  ><i class="fa fa-edit fa-sm" title="Edit Record"></i>
+                </a>
+                <a
+                  href="{% url 'bodegueador_delete' c.id %}"
+                  class="btn btn-danger"
+                  style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"
+                  ><i class="fa fa-trash fa-sm" title="Delete Record"></i>
+                </a>                
+            </td>   
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+{% endblock contenido%}
+
+{% block cards%}
+{% endblock cards%}
