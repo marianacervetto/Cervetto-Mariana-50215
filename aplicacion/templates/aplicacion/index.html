@@ -15,21 +15,37 @@
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css" />
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="{% static  'css/styles.css' %}" rel="stylesheet" />
+        <!-- Fontawesome-->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">    
     </head>
     <body>
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
             <div class="container px-4 px-lg-5">
                 <a class="navbar-brand" href="{% url 'home' %}">Inicio</a>
+                <a class="navbar-brand" href="{% url 'acerca' %}">Acerca de mi</a>
+                {% if user.is_authenticated %}
                 <a class="navbar-brand" href="{% url 'bodegones' %}">Bodegones</a>
                 <a class="navbar-brand" href="{% url 'resenas' %}">Reseñas</a>
                 <a class="navbar-brand" href="{% url 'bodegueadores' %}">Bodegueadores</a>
+                <p style="color:green">[{{user.username}}]</p>
+                <div class="text-center">
+                    <a  href="{% url 'agregar_avatar' %}" ><img src="{{ request.session.avatar }}" height="40px" weight="40px"/></a>
+                </div>              
+                <a class="btn btn-logout" href="{% url 'logout' %}">Logout</a>  
+                <a class="btn btn-perfil" href="{% url 'perfil' %}">Mi Cuenta</a>  
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                {% else %}
+                <a class="btn btn-login" href="{% url 'login' %}">Ingresar</a>
+                <a class="btn btn-registrate" href="{% url 'registrar' %}">Registrarse</a>
+                   
+                {% endif %}
+            
             </div>
         </nav>
         
         <!-- Page Header-->
-        <header class="masthead" style="background-image: url('static/assets/img/home-bg.jpg')">
+        <header class="masthead" style="background-image: url('https://i.pinimg.com/originals/1f/be/13/1fbe137266898b1e242510784fa9a41b.jpg')">
             <div class="container position-relative px-2 px-lg-3">
                 <div class="row gx-4 gx-lg-5 justify-content-center">
                     <div class="col-md-15 col-lg-10 col-xl-7">
@@ -37,7 +53,7 @@
                             
                             {% block titulo %}
 
-                            <h1>BBBodegueando</h1>
+                            <h1>BBBodegueando Buenos Aires</h1>
                             <span class="subheading">La Guía Michellin de los Bodegones "Buenos, Bonitos y Baratos" </span>
 
                             {% endblock titulo %}
@@ -50,57 +66,55 @@
         </header>
 
 
-        <div class="container px-4 px-lg-5">
-            <div class="row gx-2 gx-lg-3 justify-content-center">
-                <div class="col-md-10 col-lg-8 col-xl-7">
-                    <!--Inicio - Sobre nosotros-->
-                    <div class="sobre nosotros - intro">
 
-                        {% block contenido %}
-            
-                            <p class="post-title">¿Cansado de que te sirvan un plato con 5 ravioles? ¿O que en el menú figure ''fino colchón de hojas verdes'' para referirse a la lechuga? Nosotros te entendemos, por eso creamos ''BBBodegueando'',  un espacio exclusivo para los amantes del buen comer y la abundancia. 
-                                
-                                Te invitamos a leer nuestras reseñas para que tu próxima comida sea en un lugar sin ''dress-code'', donde vendan gaseosa de litro y las empanadas se sirvan donde corresponde: en un plato en lugar de un frasco.
-                                
-                            </p>
-                        {% endblock contenido %}
-     
-        <!-- Footer-->
-        <footer class="border-top">
-            <div class="container px-4 px-lg-5">
-                <div class="row gx-4 gx-lg-5 justify-content-center">
-                    <div class="col-md-10 col-lg-8 col-xl-7">
-                        <ul class="list-inline text-center">
-                            <li class="list-inline-item">
-                                <a href="#!">
-                                    <span class="fa-stack fa-lg">
-                                        <i class="fas fa-circle fa-stack-2x"></i>
-                                        <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
-                                    </span>
-                                </a>
-                            </li>
-                            <li class="list-inline-item">
-                                <a href="#!">
-                                    <span class="fa-stack fa-lg">
-                                        <i class="fas fa-circle fa-stack-2x"></i>
-                                        <i class="fab fa-facebook-f fa-stack-1x fa-inverse"></i>
-                                    </span>
-                                </a>
-                            </li>
-                            <li class="list-inline-item">
-                                <a href="#!">
-                                    <span class="fa-stack fa-lg">
-                                        <i class="fas fa-circle fa-stack-2x"></i>
-                                        <i class="fab fa-github fa-stack-1x fa-inverse"></i>
-                                    </span>
-                                </a>
-                            </li>
-                        </ul>
-                        <div class="small text-center text-muted fst-italic">Copyright &copy; Sitio Curso CoderHouse - Python 2024</div>
-                    </div>
-                </div>
+{% block contenido%}
+<!-- Page Content-->
+<div class="container px-4 px-lg-5">
+    <!-- Heading Row-->
+    <div class="row gx-4 gx-lg-5 align-items-center my-5">
+        <div class="col-lg-7"><img class="img-fluid rounded mb-4 mb-lg-0" src="https://resizer.glanacion.com/resizer/v2/el-futbol-es-uno-de-los-elementos-decorativos-IYKO2REBHNAELBPXK6C2FVQ6XI.jpg?auth=b92a725c6ea51a8a3163975a02dd77f496f5793e802b734deccb63028224e617&width=1920&height=1280&quality=70&smart=true" alt="..." /></div>
+        <div class="col-lg-5">
+            <h1 class="font-weight-light">¡Bienvenido a BBBodegueando!</h1>
+            <p>¿Cansado de que te sirvan un plato con 5 ravioles? ¿O que en el menú figure ''fino colchón de hojas verdes'' para referirse a la lechuga? Nosotros te entendemos, por eso creamos ''BBBodegueando'',  un espacio exclusivo para los amantes del buen comer y la abundancia.Te invitamos a leer nuestras reseñas para que tu próxima comida sea en un lugar sin ''dress-code'', donde vendan gaseosa de litro y las empanadas se sirvan donde corresponde: en un plato en lugar de un frasco.</p>
+            <a class="btn btn-primary" href="/login/">¡Ingresá a tu cuenta!</a>
+        </div>
+    </div>
+{% endblock contenido%}
+
+{% block cards%}
+<!-- Cards-->
+<div class="row gx-4 gx-lg-5">
+    <div class="col-md-4 mb-5">
+        <div class="card h-100">
+            <div class="card-body">
+                <h2 class="card-title">Directorio de Bodegones</h2>
+                <p class="card-text">En esta sección podrás encontrar todos los Bodegones del blog </p>
             </div>
-        </footer>
+            <div class="card-footer"><a class="btn btn-primary btn-sm" href="/bodegones">¡Miralos!</a></div>
+        </div>
+    </div>
+    <div class="col-md-4 mb-5">
+        <div class="card h-100">
+            <div class="card-body">
+                <h2 class="card-title">Reseñas de nuestros expertos</h2>
+                <p class="card-text">Te invitamos a leer las reseñas que escribieron los Bodegueadores más exigentes</p>
+            </div>
+            <div class="card-footer"><a class="btn btn-primary btn-sm" href="/resenas">¡Leelas!</a></div>
+        </div>
+    </div>
+    <div class="col-md-4 mb-5">
+        <div class="card h-100">
+            <div class="card-body">
+                <h2 class="card-title">Nuestros Bodegueadores</h2>
+                <p class="card-text">Si se trata de hacer reseñas, ¡nuestros bodeguadores son expertos!</p>
+            </div>
+            <div class="card-footer"><a class="btn btn-primary btn-sm" href="/bodegueadores">¡Conocelos!</a></div>
+        </div>
+    </div>
+</div>
+</div>
+{% endblock cards%}
+ 
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->

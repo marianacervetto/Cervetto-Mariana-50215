@@ -8,8 +8,11 @@
 
 <form action="{% url 'encontrar_resenas' %}" method="get">
     {% csrf_token %}
-    <p> Busque reseñas de bodegones que coincidan con el texto que ingrese a continuación: <input type="text" name="buscar" id="buscar"></p>
+    <p> Ingrese el nombre del Bodegón para ver sus reseñas: <input type="text" name="buscar" id="buscar"></p>
     <input type="submit" value="Buscar">
 </form>
 
 {% endblock contenido%}
+
+{% block cards%}
+{% endblock cards%}

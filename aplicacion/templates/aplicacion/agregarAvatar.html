@@ -1,0 +1,23 @@
+{% extends "aplicacion/index.html" %}
+
+
+{% block titulo %}
+<h1 class="mb-5">Avatar</h1>
+{% endblock titulo %}
+
+
+{% block contenido %}
+<p> Seleccione una imagen para actualizar su Avatar: </p>
+
+<form action="" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <table>
+        {{ form.as_table }}
+    </table>
+    <input type="submit" value="Actualizar Avatar">
+</form>
+
+{% endblock contenido %}
+
+{% block cards%}
+{% endblock cards%}

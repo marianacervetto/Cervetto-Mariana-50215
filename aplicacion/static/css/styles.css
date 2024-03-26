@@ -10796,3 +10796,41 @@ header.masthead .post-heading .meta a {
     font-size: 2.25rem;
   }
 }
+
+.btn.btn-login {
+  background-color: #4CAF50; 
+  color: white;
+  padding: 10px 20px; 
+  text-decoration: none;
+  border-radius: 5px;
+  
+}
+
+.btn.btn-registrate {
+  background-color: #4CAF50; 
+  color: white; 
+  padding: 10px 20px; 
+  text-decoration: none; 
+  border-radius: 5px; 
+  position: absolute;
+  top: 50%; 
+  right: 20px;
+  transform: translateY(-50%); 
+}
+
+.btn.btn-perfil {
+  background-color: #4CAF50;
+  color: white; 
+  padding: 10px 20px;
+  text-decoration: none; 
+  border-radius: 5px; 
+}
+
+
+.btn.btn-logout  {
+  background-color: #ed2e38;
+  color: white; 
+  padding: 10px 20px;
+  text-decoration: none; 
+  border-radius: 5px; 
+}
